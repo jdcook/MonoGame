@@ -15,6 +15,58 @@ namespace Microsoft.Xna.Framework
     [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct Matrix : IEquatable<Matrix>
     {
+
+
+        /*
+         * 3x3 Matrix
+         */
+
+        /// <summary>
+        /// converts from bepu3x3 to xna matrix
+        /// </summary>
+        public static implicit operator Microsoft.Xna.Framework.Matrix(BEPUutilities.Matrix3x3 bepuMat)
+        {
+            return new Microsoft.Xna.Framework.Matrix(bepuMat.M11, bepuMat.M12, bepuMat.M13, 0, bepuMat.M21, bepuMat.M22, bepuMat.M23, 0, bepuMat.M31, bepuMat.M32, bepuMat.M33, 0, 0, 0, 0, 1);
+        }
+
+        /// <summary>
+        /// converts from xna to bepu matrix3x3
+        /// </summary>
+        public static implicit operator BEPUutilities.Matrix3x3(Microsoft.Xna.Framework.Matrix xnaMat)
+        {
+            return new BEPUutilities.Matrix3x3(xnaMat.M11, xnaMat.M12, xnaMat.M13, xnaMat.M21, xnaMat.M22, xnaMat.M23, xnaMat.M31, xnaMat.M32, xnaMat.M33);
+        }
+
+        /*
+         * Normal Matrix
+         */
+
+        /// <summary>
+        /// converts from bepu to xna matrix
+        /// </summary>
+        public static implicit operator Microsoft.Xna.Framework.Matrix(BEPUutilities.Matrix bepuMat)
+        {
+            return new Microsoft.Xna.Framework.Matrix(bepuMat.M11, bepuMat.M12, bepuMat.M13, bepuMat.M14, bepuMat.M21, bepuMat.M22, bepuMat.M23, bepuMat.M24, bepuMat.M31, bepuMat.M32, bepuMat.M33, bepuMat.M34, bepuMat.M41, bepuMat.M42, bepuMat.M43, bepuMat.M44);
+        }
+
+        /// <summary>
+        /// converts from xna to bepu matrix
+        /// </summary>
+        public static implicit operator BEPUutilities.Matrix(Microsoft.Xna.Framework.Matrix xnaMat)
+        {
+            return new BEPUutilities.Matrix(xnaMat.M11, xnaMat.M12, xnaMat.M13, xnaMat.M14, xnaMat.M21, xnaMat.M22, xnaMat.M23, xnaMat.M24, xnaMat.M31, xnaMat.M32, xnaMat.M33, xnaMat.M34, xnaMat.M41, xnaMat.M42, xnaMat.M43, xnaMat.M44);
+        }
+
+
+
+
+
+
+
+
+
+
+
         #region Public Constructors
 
         /// <summary>

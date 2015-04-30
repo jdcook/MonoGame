@@ -14,6 +14,27 @@ namespace Microsoft.Xna.Framework
     public struct BoundingBox : IEquatable<BoundingBox>
     {
 
+
+        /// <summary>
+        /// converts from bepu to xna boundingbox
+        /// </summary>
+        public static implicit operator Microsoft.Xna.Framework.BoundingBox(BEPUutilities.BoundingBox bepuBox)
+        {
+            return new Microsoft.Xna.Framework.BoundingBox(bepuBox.Min, bepuBox.Max);
+        }
+
+        /// <summary>
+        /// converts from xna to bepu boundingbox
+        /// </summary>
+        public static implicit operator BEPUutilities.BoundingBox(Microsoft.Xna.Framework.BoundingBox xnaBox)
+        {
+            return new BEPUutilities.BoundingBox(xnaBox.Min, xnaBox.Max);
+        }
+
+
+
+
+
         #region Public Fields
 
         [DataMember]

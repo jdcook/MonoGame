@@ -12,6 +12,32 @@ namespace Microsoft.Xna.Framework
     [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct Quaternion : IEquatable<Quaternion>
     {
+
+
+        /// <summary>
+        /// converts from bepu to xna quaternion
+        /// </summary>
+        public static implicit operator Microsoft.Xna.Framework.Quaternion(BEPUutilities.Quaternion bepuQuat)
+        {
+            return new Microsoft.Xna.Framework.Quaternion(bepuQuat.X, bepuQuat.Y, bepuQuat.Z, bepuQuat.W);
+        }
+
+        /// <summary>
+        /// converts from xna to bepu quaternion
+        /// </summary>
+        public static implicit operator BEPUutilities.Quaternion(Microsoft.Xna.Framework.Quaternion xnaMat)
+        {
+            return new BEPUutilities.Quaternion(xnaMat.X, xnaMat.Y, xnaMat.Z, xnaMat.W);
+        }
+
+
+
+
+
+
+
+
+
         [DataMember]
         public float X;
 

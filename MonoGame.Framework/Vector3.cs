@@ -16,6 +16,28 @@ namespace Microsoft.Xna.Framework
     [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct Vector3 : IEquatable<Vector3>
     {
+
+
+        /// <summary>
+        /// convert from bepu to xna vector3
+        /// </summary>
+        public static implicit operator Microsoft.Xna.Framework.Vector3(BEPUutilities.Vector3 bepuVec)
+        {
+            return new Microsoft.Xna.Framework.Vector3(bepuVec.X, bepuVec.Y, bepuVec.Z);
+        }
+
+        /// <summary>
+        /// convert from xna to bepu vector3
+        /// </summary>
+        public static implicit operator BEPUutilities.Vector3(Microsoft.Xna.Framework.Vector3 xnaVec)
+        {
+            return new BEPUutilities.Vector3(xnaVec.X, xnaVec.Y, xnaVec.Z);
+        }
+
+
+
+
+
         #region Private Fields
 
         private static  Vector3 zero = new Vector3(0f, 0f, 0f);
