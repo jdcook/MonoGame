@@ -33,7 +33,7 @@ namespace Microsoft.Xna.Framework.Audio
             var e = emitter.ToEmitter();
             e.CurveDistanceScaler = SoundEffect.DistanceScale;
             e.DopplerScaler = SoundEffect.DopplerScale;
-            e.ChannelCount = _effect._format.Channels;
+            e.ChannelCount = 1;//_effect._format.Channels;
 
             // Convert from XNA Listener to a SharpDX Listener
             var l = listener.ToListener();
