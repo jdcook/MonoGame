@@ -143,11 +143,22 @@ namespace Microsoft.Xna.Framework.Input
             if (!_connected[index] && _timeout[index] > DateTime.UtcNow.Ticks)
                 return new GamePadState();
 
-            // Try to get the controller state.
-            SharpDX.XInput.State xistate;
-            var controller = _controllers[index];
-            _connected[index] = controller.GetState(out xistate);
-            var gamepad = xistate.Gamepad;
+            int packetNumber = 0;
+
+            var gamepad = new SharpDX.XInput.Gamepad();
+            try
+            {
+                // Try to get the controller state.
+                SharpDX.XInput.State xistate;
+                var controller = _controllers[index];
+                _connected[index] = controller.GetState(out xistate);
+                packetNumber = xistate.PacketNumber;
+                gamepad = xistate.Gamepad;
+            }
+            catch
+            {
+
+            }
 
             // If the device is disconnected retry it after the
             // timeout period has elapsed to avoid the overhead.
@@ -186,6 +197,8 @@ namespace Microsoft.Xna.Framework.Input
                 triggers: triggers,
                 buttons: buttons,
                 dPad: dpadState);
+
+            state.PacketNumber = packetNumber;
 
             return state;
         }
