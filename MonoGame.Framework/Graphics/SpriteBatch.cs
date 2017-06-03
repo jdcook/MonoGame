@@ -481,16 +481,40 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="scale">A scaling of this string.</param>
         /// <param name="effects">Modificators for drawing. Can be combined.</param>
         /// <param name="layerDepth">A depth of the layer of this string.</param>
-		public void DrawString (
-			SpriteFont spriteFont, string text, Vector2 position, Color color,
+        public void DrawString(
+            SpriteFont spriteFont, string text, Vector2 position, Color color,
             float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth)
-		{
+        {
             CheckValid(spriteFont, text);
 
-			var scaleVec = new Vector2(scale, scale);
+            var scaleVec = new Vector2(scale, scale);
             var source = new SpriteFont.CharacterSource(text);
             spriteFont.DrawInto(this, ref source, position, color, rotation, origin, scaleVec, effects, layerDepth);
-		}
+        }
+
+        /// <summary>
+        /// Submit a text string of sprites for drawing in the current batch.
+        /// </summary>
+        /// <param name="spriteFont">A font.</param>
+        /// <param name="text">The text which will be drawn.</param>
+        /// <param name="position">The drawing location on screen.</param>
+        /// <param name="color">A color mask.</param>
+        /// <param name="rotation">A rotation of this string.</param>
+        /// <param name="origin">Center of the rotation. 0,0 by default.</param>
+        /// <param name="scale">A scaling of this string.</param>
+        /// <param name="effects">Modificators for drawing. Can be combined.</param>
+        /// <param name="layerDepth">A depth of the layer of this string.</param>
+        /// <param name="maxStrLen">The maximum number of letters in the string to draw.</param>
+        public void DrawString(
+            SpriteFont spriteFont, string text, int maxStrLen, Vector2 position, Color color,
+            float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth)
+        {
+            CheckValid(spriteFont, text);
+
+            var scaleVec = new Vector2(scale, scale);
+            var source = new SpriteFont.CharacterSource(text);
+            spriteFont.DrawInto(this, ref source, position, color, rotation, origin, scaleVec, effects, layerDepth, maxStrLen);
+        }
 
         /// <summary>
         /// Submit a text string of sprites for drawing in the current batch.
@@ -541,16 +565,16 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="scale">A scaling of this string.</param>
         /// <param name="effects">Modificators for drawing. Can be combined.</param>
         /// <param name="layerDepth">A depth of the layer of this string.</param>
-		public void DrawString (
-			SpriteFont spriteFont, StringBuilder text, Vector2 position, Color color,
+        public void DrawString(
+            SpriteFont spriteFont, StringBuilder text, Vector2 position, Color color,
             float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth)
-		{
+        {
             CheckValid(spriteFont, text);
 
-			var scaleVec = new Vector2 (scale, scale);
+            var scaleVec = new Vector2(scale, scale);
             var source = new SpriteFont.CharacterSource(text);
             spriteFont.DrawInto(this, ref source, position, color, rotation, origin, scaleVec, effects, layerDepth);
-		}
+        }
 
         /// <summary>
         /// Submit a text string of sprites for drawing in the current batch.

@@ -280,8 +280,13 @@ namespace Microsoft.Xna.Framework.Graphics
 		}
 
         internal void DrawInto( SpriteBatch spriteBatch, ref CharacterSource text, Vector2 position, Color color,
-			                    float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect, float depth)
+			                    float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect, float depth, int maxStrLen = -1)
 		{
+            if (maxStrLen == -1)
+            {
+                maxStrLen = text.Length;
+            }
+
             var flipAdjustment = Vector2.Zero;
 
             var flippedVert = (effect & SpriteEffects.FlipVertically) == SpriteEffects.FlipVertically;
@@ -329,7 +334,7 @@ namespace Microsoft.Xna.Framework.Graphics
             var hasCurrentGlyph = false;
             var firstGlyphOfLine = true;
 
-			for (var i = 0; i < text.Length; ++i)
+			for (var i = 0; i < text.Length && i < maxStrLen; ++i)
             {
                 var c = text[i];
                 if (c == '\r')
