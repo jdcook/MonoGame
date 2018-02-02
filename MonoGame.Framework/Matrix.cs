@@ -5,6 +5,8 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using FixedMath;
+
 
 namespace Microsoft.Xna.Framework
 { 
@@ -26,7 +28,7 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator Microsoft.Xna.Framework.Matrix(BEPUutilities.Matrix3x3 bepuMat)
         {
-            return new Microsoft.Xna.Framework.Matrix(bepuMat.M11, bepuMat.M12, bepuMat.M13, 0, bepuMat.M21, bepuMat.M22, bepuMat.M23, 0, bepuMat.M31, bepuMat.M32, bepuMat.M33, 0, 0, 0, 0, 1);
+            return new Microsoft.Xna.Framework.Matrix((float)bepuMat.M11, (float)bepuMat.M12, (float)bepuMat.M13, 0, (float)bepuMat.M21, (float)bepuMat.M22, (float)bepuMat.M23, 0, (float)bepuMat.M31, (float)bepuMat.M32, (float)bepuMat.M33, 0, 0, 0, 0, 1);
         }
 
         /// <summary>
@@ -34,7 +36,7 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator BEPUutilities.Matrix3x3(Microsoft.Xna.Framework.Matrix xnaMat)
         {
-            return new BEPUutilities.Matrix3x3(xnaMat.M11, xnaMat.M12, xnaMat.M13, xnaMat.M21, xnaMat.M22, xnaMat.M23, xnaMat.M31, xnaMat.M32, xnaMat.M33);
+            return new BEPUutilities.Matrix3x3((Fix64)xnaMat.M11, (Fix64)xnaMat.M12, (Fix64)xnaMat.M13, (Fix64)xnaMat.M21, (Fix64)xnaMat.M22, (Fix64)xnaMat.M23, (Fix64)xnaMat.M31, (Fix64)xnaMat.M32, (Fix64)xnaMat.M33);
         }
 
         /*
@@ -46,7 +48,7 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator Microsoft.Xna.Framework.Matrix(BEPUutilities.Matrix bepuMat)
         {
-            return new Microsoft.Xna.Framework.Matrix(bepuMat.M11, bepuMat.M12, bepuMat.M13, bepuMat.M14, bepuMat.M21, bepuMat.M22, bepuMat.M23, bepuMat.M24, bepuMat.M31, bepuMat.M32, bepuMat.M33, bepuMat.M34, bepuMat.M41, bepuMat.M42, bepuMat.M43, bepuMat.M44);
+            return new Microsoft.Xna.Framework.Matrix((float)bepuMat.M11, (float)bepuMat.M12, (float)bepuMat.M13, (float)bepuMat.M14, (float)bepuMat.M21, (float)bepuMat.M22, (float)bepuMat.M23, (float)bepuMat.M24, (float)bepuMat.M31, (float)bepuMat.M32, (float)bepuMat.M33, (float)bepuMat.M34, (float)bepuMat.M41, (float)bepuMat.M42, (float)bepuMat.M43, (float)bepuMat.M44);
         }
 
         /// <summary>
@@ -54,10 +56,31 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator BEPUutilities.Matrix(Microsoft.Xna.Framework.Matrix xnaMat)
         {
-            return new BEPUutilities.Matrix(xnaMat.M11, xnaMat.M12, xnaMat.M13, xnaMat.M14, xnaMat.M21, xnaMat.M22, xnaMat.M23, xnaMat.M24, xnaMat.M31, xnaMat.M32, xnaMat.M33, xnaMat.M34, xnaMat.M41, xnaMat.M42, xnaMat.M43, xnaMat.M44);
+            return new BEPUutilities.Matrix((Fix64)xnaMat.M11, (Fix64)xnaMat.M12, (Fix64)xnaMat.M13, (Fix64)xnaMat.M14, (Fix64)xnaMat.M21, (Fix64)xnaMat.M22, (Fix64)xnaMat.M23, (Fix64)xnaMat.M24, (Fix64)xnaMat.M31, (Fix64)xnaMat.M32, (Fix64)xnaMat.M33, (Fix64)xnaMat.M34, (Fix64)xnaMat.M41, (Fix64)xnaMat.M42, (Fix64)xnaMat.M43, (Fix64)xnaMat.M44);
         }
 
+        public void Copy(BEPUutilities.Matrix3x3 bepuMat)
+        {
+            this.M11 = (float)bepuMat.M11;
+            this.M12 = (float)bepuMat.M12;
+            this.M13 = (float)bepuMat.M13;
+            this.M14 = 0;
 
+            this.M21 = (float)bepuMat.M21;
+            this.M22 = (float)bepuMat.M22;
+            this.M23 = (float)bepuMat.M23;
+            this.M24 = 0;
+
+            this.M31 = (float)bepuMat.M31;
+            this.M32 = (float)bepuMat.M32;
+            this.M33 = (float)bepuMat.M33;
+            this.M34 = 0;
+
+            this.M41 = 0;
+            this.M42 = 0;
+            this.M43 = 0;
+            this.M44 = 1;
+        }
 
 
 

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using FixedMath;
 
 namespace Microsoft.Xna.Framework
 {
@@ -19,7 +20,7 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator Microsoft.Xna.Framework.Quaternion(BEPUutilities.Quaternion bepuQuat)
         {
-            return new Microsoft.Xna.Framework.Quaternion(bepuQuat.X, bepuQuat.Y, bepuQuat.Z, bepuQuat.W);
+            return new Microsoft.Xna.Framework.Quaternion((float)bepuQuat.X, (float)bepuQuat.Y, (float)bepuQuat.Z, (float)bepuQuat.W);
         }
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator BEPUutilities.Quaternion(Microsoft.Xna.Framework.Quaternion xnaMat)
         {
-            return new BEPUutilities.Quaternion(xnaMat.X, xnaMat.Y, xnaMat.Z, xnaMat.W);
+            return new BEPUutilities.Quaternion((Fix64)xnaMat.X, (Fix64)xnaMat.Y, (Fix64)xnaMat.Z, (Fix64)xnaMat.W);
         }
 
 

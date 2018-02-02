@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Text;
 using System.Runtime.Serialization;
+using FixedMath;
 
 namespace Microsoft.Xna.Framework
 {
@@ -16,14 +17,14 @@ namespace Microsoft.Xna.Framework
     [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct Vector3 : IEquatable<Vector3>
     {
-
+        
 
         /// <summary>
         /// convert from bepu to xna vector3
         /// </summary>
         public static implicit operator Microsoft.Xna.Framework.Vector3(BEPUutilities.Vector3 bepuVec)
         {
-            return new Microsoft.Xna.Framework.Vector3(bepuVec.X, bepuVec.Y, bepuVec.Z);
+            return new Microsoft.Xna.Framework.Vector3((float)bepuVec.X, (float)bepuVec.Y, (float)bepuVec.Z);
         }
 
         /// <summary>
@@ -31,9 +32,9 @@ namespace Microsoft.Xna.Framework
         /// </summary>
         public static implicit operator BEPUutilities.Vector3(Microsoft.Xna.Framework.Vector3 xnaVec)
         {
-            return new BEPUutilities.Vector3(xnaVec.X, xnaVec.Y, xnaVec.Z);
+            return new BEPUutilities.Vector3((Fix64)xnaVec.X, (Fix64)xnaVec.Y, (Fix64)xnaVec.Z);
         }
-
+        
 
 
 
