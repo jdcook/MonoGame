@@ -116,7 +116,7 @@ namespace Lidgren.Network
 			return retval;
 		}
 
-		internal NetIncomingMessage CreateIncomingMessage(NetIncomingMessageType tp, int minimumByteSize)
+		public NetIncomingMessage CreateIncomingMessage(NetIncomingMessageType tp, int minimumByteSize)
 		{
 			NetIncomingMessage retval;
 			if (m_incomingMessagesPool == null || !m_incomingMessagesPool.TryDequeue(out retval))

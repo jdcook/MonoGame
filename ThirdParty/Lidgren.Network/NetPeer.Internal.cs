@@ -18,7 +18,7 @@ namespace Lidgren.Network
 		private Thread m_networkThread;
 		private Socket m_socket;
 		internal byte[] m_sendBuffer;
-		internal byte[] m_receiveBuffer;
+		public byte[] m_receiveBuffer;
 		internal NetIncomingMessage m_readHelperMessage;
 		private EndPoint m_senderRemote;
 		private object m_initializeLock = new object();
