@@ -121,7 +121,7 @@ namespace MonoGame.Framework
 
             base.BeforeInitialize();
 
-            #if (WINDOWS && DIRECTX)
+#if (WINDOWS && DIRECTX)
 
             if (Game.graphicsDeviceManager.IsFullScreen)
             {
@@ -143,7 +143,7 @@ namespace MonoGame.Framework
         {
             throw new NotSupportedException("The Windows platform does not support asynchronous run loops");
         }
-        
+
         public override void Exit()
         {
             _window.Dispose();
@@ -171,9 +171,9 @@ namespace MonoGame.Framework
 
             if (Game.graphicsDeviceManager.HardwareModeSwitch)
             {
-                 Game.GraphicsDevice.PresentationParameters.IsFullScreen = true;
-                 Game.GraphicsDevice.CreateSizeDependentResources(true);
-                 Game.GraphicsDevice.ApplyRenderTargets(null);
+                Game.GraphicsDevice.PresentationParameters.IsFullScreen = true;
+                Game.GraphicsDevice.CreateSizeDependentResources(true);
+                Game.GraphicsDevice.ApplyRenderTargets(null);
                 _window._form.WindowState = FormWindowState.Maximized;
             }
             else
@@ -192,7 +192,7 @@ namespace MonoGame.Framework
 #if (WINDOWS && DIRECTX)
             if (_alreadyInWindowedMode)
             {
-               return;
+                return;
             }
 
             if (Game.graphicsDeviceManager.HardwareModeSwitch)
@@ -218,7 +218,7 @@ namespace MonoGame.Framework
         {
             _window.ChangeClientSize(new Size(Game.graphicsDeviceManager.PreferredBackBufferWidth, Game.graphicsDeviceManager.PreferredBackBufferHeight));
         }
-        
+
         public override void EndScreenDeviceChange(string screenDeviceName, int clientWidth, int clientHeight)
         {
         }
@@ -238,7 +238,7 @@ namespace MonoGame.Framework
             if ( device != null )
                 device.Present();
         }
-		
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
