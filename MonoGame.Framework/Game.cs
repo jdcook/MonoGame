@@ -323,6 +323,7 @@ namespace Microsoft.Xna.Framework
 #endif
         public void Exit()
         {
+            Platform.Exit();
             _shouldExit = true;
             _suppressDraw = true;
         }

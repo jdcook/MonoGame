@@ -415,6 +415,10 @@ namespace MonoGame.Framework
             // Since there's existing bug from implementation with mono WinForms since 09'
             // Application.Idle is not working as intended
             // So we're just going to emulate Application.Run just like Microsoft implementation
+            if (_form == null)
+            {
+                return;
+            }
             _form.Show();
 
             var nativeMsg = new NativeMessage();
@@ -442,6 +446,11 @@ namespace MonoGame.Framework
             // typically will run all the tests on the same
             // process/thread.
 
+            // fuck you monogame
+            // seriously it's 11pm on a weeknight and I just realized this has no affect on a production build and was preventing the game from fully closing on Windows 10
+            // -Jared
+
+            /*
             var msg = new NativeMessage();
             do
             {
@@ -451,6 +460,7 @@ namespace MonoGame.Framework
                 Thread.Sleep(100);
             } 
             while (PeekMessage(out msg, IntPtr.Zero, 0, 0, 1));
+            */
         }
 
         internal void UpdateWindows()
